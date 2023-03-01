@@ -9,4 +9,5 @@ public class Globals {
     public static String ID_BOARD = "63ff156928e09d025dc06a6c";
     public static String ID_CHECKLIST = "1";
     public static String ID_ACTION = "63ff319d9a941890e640d055";
+    public static String COMMENT_ACTION_TEXT = "text";
 }
