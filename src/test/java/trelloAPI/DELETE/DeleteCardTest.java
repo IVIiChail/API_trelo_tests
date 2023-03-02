@@ -11,14 +11,15 @@ public class DeleteCardTest {
     public String CARD_ID;
 
     @BeforeTest
-    public void createNewCard(){
-        CreateNewCardTest createNewCard = new CreateNewCardTest();
-        createNewCard.createNewCardTest();
-        CARD_ID = createNewCard.ID_CARD;
+    public void createNewCard() {
+        CreateNewCardTest createNewCardTest = new CreateNewCardTest();
+        createNewCardTest.createNewCardTest();
+        CARD_ID = createNewCardTest.ID_CARD;
     }
+
     @Test
-    public void deleteCardTest(){
-        Specifications.installSpec(Specifications.requestSpec(),Specifications.responseSpecOK200());
+    public void deleteCardTest() {
+        Specifications.installSpec(Specifications.requestSpec(), Specifications.responseSpecOK200());
         JsonPath jsonResponse = given()
                 .header("Accept", "application/json")
                 .when()
