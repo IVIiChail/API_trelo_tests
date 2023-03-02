@@ -13,7 +13,7 @@ public class DeleteCardTest {
     @BeforeTest
     public void createNewCard(){
         CreateNewCardTest createNewCard = new CreateNewCardTest();
-        createNewCard.createNewCard();
+        createNewCard.createNewCardTest();
         CARD_ID = createNewCard.ID_CARD;
     }
     @Test
