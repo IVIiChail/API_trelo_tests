@@ -11,7 +11,7 @@ import trelloAPI.Globals;
 import static io.restassured.RestAssured.given;
 
 public class CreateNewCardTest {
-    public static String ID_CARD;
+    public String ID_CARD;
     @Test
     public void createNewCardTest(){
         Specifications.installSpec(Specifications.requestSpec(), Specifications.responseSpecOK200());
