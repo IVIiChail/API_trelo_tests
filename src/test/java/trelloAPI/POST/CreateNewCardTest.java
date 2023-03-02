@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class CreateNewCardTest {
     public String ID_CARD;
     @Test
-    public void createNewCardTest(){
+    public void createNewCard(){
         Specifications.installSpec(Specifications.requestSpec(), Specifications.responseSpecOK200());
         JsonPath jsonResponse = given()
                 .header("Accept", "application/json")
