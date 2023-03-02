@@ -11,4 +11,5 @@ public class Globals {
     public static String ID_ACTION = "63ff319d9a941890e640d055";
     public static String COMMENT_ACTION_TEXT = "text";
     public static String COMMENT_ACTION_UPDATE_TEXT = "comment";
+    public static String MEMBER_ID_ADD = "63bd58ea413b1e01630d731a";
 }
