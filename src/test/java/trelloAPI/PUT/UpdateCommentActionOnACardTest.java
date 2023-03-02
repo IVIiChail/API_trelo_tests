@@ -2,8 +2,11 @@ package trelloAPI.PUT;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import trelloAPI.DELETE.DeleteACommentOnACardTest;
 import trelloAPI.Globals;
 import trelloAPI.POST.AddANewCommentToACardTest;
 import trelloAPI.Specifications;
@@ -14,7 +17,13 @@ public class UpdateCommentActionOnACardTest {
     private static AddANewCommentToACardTest addANewCommentToACardTest;
     private static String ACTION_ID;
 
-    @BeforeMethod
+    @AfterMethod
+    public void deleteComment(){
+        DeleteACommentOnACardTest deleteACommentOnACardTest = new DeleteACommentOnACardTest();
+        deleteACommentOnACardTest.createNewCommentToACard();
+    }
+
+    @BeforeTest
     public void createNewCommentToACard(){
         addANewCommentToACardTest = new AddANewCommentToACardTest();
         addANewCommentToACardTest.addANewCommentToACardTest();
