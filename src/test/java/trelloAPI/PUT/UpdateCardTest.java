@@ -2,6 +2,8 @@ package trelloAPI.PUT;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import trelloAPI.DELETE.DeleteCardTest;
@@ -35,6 +37,7 @@ public class UpdateCardTest {
         Assert.assertEquals(response.get("name"), Globals.CARD_NAME_UPDATE);
 
     }
+    @AfterTest
     public void deleteCard(){
         DeleteCardTest deleteCardTest = new DeleteCardTest();
         deleteCardTest.CARD_ID = UPDATE_CARD_ID;
