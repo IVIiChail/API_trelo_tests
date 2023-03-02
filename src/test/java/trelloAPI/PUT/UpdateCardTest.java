@@ -23,13 +23,13 @@ public class UpdateCardTest {
         UPDATE_CARD_ID = createNewCardTest.ID_CARD;
     }
     @Test
-    public void updateCard(){
+    public void updateCardTest(){
         Specifications.installSpec(Specifications.requestSpec(),Specifications.responseSpecOK200());
         JsonPath response = given()
                 .header("Accept", "application/json")
                 .queryParam("name", Globals.CARD_NAME_UPDATE)
                 .when()
-                .post("/1/cards/{id}", UPDATE_CARD_ID)
+                .put("/1/cards/{id}", UPDATE_CARD_ID)
                 .then().log().all()
                 .extract().jsonPath();
 
