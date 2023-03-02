@@ -19,7 +19,7 @@ public class UpdateCardTest {
     @BeforeTest
     public void createNewCard(){
         CreateNewCardTest createNewCardTest = new CreateNewCardTest();
-        createNewCardTest.createNewCard();
+        createNewCardTest.createNewCardTest();
         UPDATE_CARD_ID = createNewCardTest.ID_CARD;
     }
     @Test
