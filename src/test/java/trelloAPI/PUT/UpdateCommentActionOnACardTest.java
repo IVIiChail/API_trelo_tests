@@ -17,7 +17,7 @@ public class UpdateCommentActionOnACardTest {
     public String CARD_ID;
 
     @BeforeTest
-    public void createNewCommentToACard(){
+    public void createNewCardWithAComment(){
         CreateNewCardTest createNewCardTest = new CreateNewCardTest();
         createNewCardTest.createNewCardTest();
         CARD_ID = createNewCardTest.ID_CARD;
@@ -47,7 +47,7 @@ public class UpdateCommentActionOnACardTest {
         DeleteACommentOnACardTest deleteACommentOnACardTest = new DeleteACommentOnACardTest();
         deleteACommentOnACardTest.CARD_ID = CARD_ID;
         deleteACommentOnACardTest.COMMENT_ID = ACTION_ID;
-        deleteACommentOnACardTest.createNewCommentToACard();
+        deleteACommentOnACardTest.deleteACommentOnACardTest();
         DeleteCardTest deleteCardTest = new DeleteCardTest();
         deleteCardTest.CARD_ID = CARD_ID;
         deleteCardTest.deleteCardTest();

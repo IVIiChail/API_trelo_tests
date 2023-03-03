@@ -16,7 +16,7 @@ public class DeleteACommentOnACardTest {
     public String CARD_ID;
 
     @BeforeTest
-    public void createNewCommentToACard(){
+    public void createNewCardWithAComment(){
         CreateNewCardTest createNewCardTest = new CreateNewCardTest();
         createNewCardTest.createNewCardTest();
         CARD_ID = createNewCardTest.ID_CARD;

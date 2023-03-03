@@ -44,7 +44,7 @@ public class AddANewCommentToACardTest {
         DeleteACommentOnACardTest deleteACommentOnACardTest = new DeleteACommentOnACardTest();
         deleteACommentOnACardTest.COMMENT_ID = COMMENT_ID;
         deleteACommentOnACardTest.CARD_ID = CARD_ID;
-        deleteACommentOnACardTest.createNewCommentToACard();
+        deleteACommentOnACardTest.deleteACommentOnACardTest();
         DeleteCardTest deleteCardTest = new DeleteCardTest();
         deleteCardTest.CARD_ID = CARD_ID;
         deleteCardTest.deleteCardTest();
