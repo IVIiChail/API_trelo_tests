@@ -6,17 +6,22 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import trelloAPI.Globals;
 import trelloAPI.POST.AddANewCommentToACardTest;
+import trelloAPI.POST.CreateNewCardTest;
 import trelloAPI.Specifications;
 
 import static io.restassured.RestAssured.given;
 
 public class DeleteACommentOnACardTest {
-    private static String COMMENT_ID;
-    private static AddANewCommentToACardTest addANewCommentToACardTest;
+    public String COMMENT_ID;
+    public String CARD_ID;
 
     @BeforeTest
     public void createNewCommentToACard(){
-        addANewCommentToACardTest = new AddANewCommentToACardTest();
+        CreateNewCardTest createNewCardTest = new CreateNewCardTest();
+        createNewCardTest.createNewCardTest();
+        CARD_ID = createNewCardTest.ID_CARD;
+        AddANewCommentToACardTest addANewCommentToACardTest = new AddANewCommentToACardTest();
+        addANewCommentToACardTest.CARD_ID = CARD_ID;
         addANewCommentToACardTest.addANewCommentToACardTest();
         COMMENT_ID = addANewCommentToACardTest.COMMENT_ID;
     }
@@ -27,7 +32,7 @@ public class DeleteACommentOnACardTest {
         given()
                 .header("Accept", "application/json")
                 .when()
-                .delete("/1/cards/{id}/actions/{idAction}/comments", Globals.ID_CARD, COMMENT_ID)
+                .delete("/1/cards/{id}/actions/{idAction}/comments", CARD_ID, COMMENT_ID)
                 .then().log().all();
     }
 }
