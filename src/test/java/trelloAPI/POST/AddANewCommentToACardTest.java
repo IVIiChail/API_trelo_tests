@@ -2,9 +2,11 @@ package trelloAPI.POST;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import trelloAPI.DELETE.DeleteACommentOnACardTest;
+import trelloAPI.DELETE.DeleteCardTest;
 import trelloAPI.Globals;
 import trelloAPI.Specifications;
 
@@ -13,11 +15,13 @@ import static io.restassured.RestAssured.given;
 public class AddANewCommentToACardTest {
 
     public static String COMMENT_ID;
+    public String CARD_ID;
 
-    @AfterMethod
-    public void deleteComment(){
-        DeleteACommentOnACardTest deleteACommentOnACardTest = new DeleteACommentOnACardTest();
-        deleteACommentOnACardTest.createNewCommentToACard();
+    @BeforeTest
+    public void createNewCard() {
+        CreateNewCardTest createNewCardTest = new CreateNewCardTest();
+        createNewCardTest.createNewCardTest();
+        CARD_ID = createNewCardTest.ID_CARD;
     }
 
     @Test
@@ -27,11 +31,22 @@ public class AddANewCommentToACardTest {
                 .header("Accept", "application/json")
                 .queryParam("text", Globals.COMMENT_ACTION_TEXT)
                 .when()
-                .post("/1/cards/{id}/actions/comments", Globals.ID_CARD)
+                .post("/1/cards/{id}/actions/comments", CARD_ID)
                 .then().log().all()
                 .extract().jsonPath();
 
         COMMENT_ID = response.get("id");
-        Assert.assertEquals(response.get("data.card.id"), Globals.ID_CARD);
+        Assert.assertEquals(response.get("data.card.id"), CARD_ID);
+    }
+
+    @AfterTest
+    public void deleteCommentWithCard(){
+        DeleteACommentOnACardTest deleteACommentOnACardTest = new DeleteACommentOnACardTest();
+        deleteACommentOnACardTest.COMMENT_ID = COMMENT_ID;
+        deleteACommentOnACardTest.CARD_ID = CARD_ID;
+        deleteACommentOnACardTest.deleteACommentOnACardTest();
+        DeleteCardTest deleteCardTest = new DeleteCardTest();
+        deleteCardTest.CARD_ID = CARD_ID;
+        deleteCardTest.deleteCardTest();
     }
 }
