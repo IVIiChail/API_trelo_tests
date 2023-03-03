@@ -16,4 +16,5 @@ public class Globals {
     public static String LABEL_COLOR = "green";
     public static String LABEL_NAME = "label";
     public static String MEMBER_ID_ADD = "63bd58ea413b1e01630d731a";
+    public static String CARD_FIELD_NAME = "name";
 }
