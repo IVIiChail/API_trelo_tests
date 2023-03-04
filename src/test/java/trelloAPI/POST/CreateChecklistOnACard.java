@@ -10,7 +10,6 @@ import trelloAPI.Globals;
 import trelloAPI.Specifications;
 
 import static io.restassured.RestAssured.given;
-import static trelloAPI.Globals.ID_CARD;
 
 public class CreateChecklistOnACard {
     public String ID_CHECKLIST;
@@ -24,12 +23,12 @@ public class CreateChecklistOnACard {
     }
 
     @Test
-    public void createChecklistOnABoard() {
+    public void createChecklistOnACards() {
         Specifications.installSpec(Specifications.requestSpec(), Specifications.responseSpecOK200());
         JsonPath jsonResponse =
         given().log().all()
                 .header("Accept","application.json")
-                .queryParam("id", ID_CARD)
+                .queryParam("name","Check")
         .when()
                 .post("/1/cards/{id}/checklists",CARD_ID)
         .then().log().all()
@@ -39,7 +38,7 @@ public class CreateChecklistOnACard {
         Assert.assertEquals(jsonResponse.get("id").toString(), ID_CHECKLIST);
     }
     @AfterTest
-    public void deleteCard(){
+   public void deleteCard(){
         DeleteCardTest deleteCardTest = new DeleteCardTest();
         deleteCardTest.CARD_ID = CARD_ID;
         deleteCardTest.deleteCardTest();
