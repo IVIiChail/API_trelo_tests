@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import trelloAPI.DELETE.DeleteAChecklistOnACardTest;
 import trelloAPI.DELETE.DeleteCardTest;
 import trelloAPI.Globals;
 import trelloAPI.Specifications;
@@ -38,7 +39,11 @@ public class CreateChecklistOnACard {
         Assert.assertEquals(jsonResponse.get("id").toString(), ID_CHECKLIST);
     }
     @AfterTest
-   public void deleteCard(){
+    public void deleteCardWithChecklist(){
+        DeleteAChecklistOnACardTest deleteAChecklistOnACardTest = new DeleteAChecklistOnACardTest();
+        deleteAChecklistOnACardTest.CARD_ID = CARD_ID;
+        deleteAChecklistOnACardTest.CHECKLIST_ID = ID_CHECKLIST;
+        deleteAChecklistOnACardTest.deleteAChecklistOnACardTest();
         DeleteCardTest deleteCardTest = new DeleteCardTest();
         deleteCardTest.CARD_ID = CARD_ID;
         deleteCardTest.deleteCardTest();
